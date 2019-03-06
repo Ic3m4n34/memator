@@ -1,0 +1,29 @@
+{
+  "connection": "default",
+  "collectionName": "childmenulink",
+  "info": {
+    "name": "childmenulink",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "label": {
+      "default": "",
+      "type": "string"
+    },
+    "url": {
+      "default": "",
+      "type": "string"
+    },
+    "title": {
+      "default": "",
+      "type": "string"
+    },
+    "menulink": {
+      "model": "menulink",
+      "via": "childmenulinks"
+    }
+  }
+}

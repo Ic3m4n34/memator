@@ -17,7 +17,10 @@
     "@nuxtjs/bulma": "^1.2.1",
     "cross-env": "^5.2.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "nuxt": "^2.4.0"
+    "nuxt": "^2.4.0",
+    "strapi-sdk-javascript": "^0.3.1",
+    "vue": "^2.6.8",
+    "vue-async-computed": "^3.6.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",
