@@ -2,13 +2,17 @@
   "defaultConnection": "default",
   "connections": {
     "default": {
-      "connector": "strapi-hook-bookshelf",
+      "connector": "strapi-hook-mongoose",
       "settings": {
-        "client": "sqlite",
-        "filename": ".tmp/data.db"
+        "client": "mongo",
+        "host": "ds361085.mlab.com",
+        "port": "61085",
+        "database": "tierphysio-db",
+        "username": "tierphysio-user",
+        "password": "rBuRZjNKw3BLYRLf"
       },
       "options": {
-        "useNullAsDefault": true
+        "authenticationDatabase": "tierphysio-db"
       }
     }
   }
