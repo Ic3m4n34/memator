@@ -32,7 +32,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    '@/assets/styles.scss',
+    '@/assets/scss/styles.scss',
   ],
 
   /*

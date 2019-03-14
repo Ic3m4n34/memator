@@ -1,6 +1,10 @@
 <template>
   <div class="the-navbar">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav
+      class="navbar"
+      role="navigation"
+      aria-label="main navigation"
+    >
       <div class="container">
         <div class="navbar-brand">
           <a
@@ -72,6 +76,45 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import 'assets/scss/base.scss';
+
+.the-navbar {
+  border-top: 1px solid #dddddd;
+
+  .navbar {
+    align-items: center;
+
+    &-item {
+      font-weight: 500;
+      border-top: 2px solid transparent;
+
+      &.nuxt-link-active,
+      &:hover {
+        color: $color-primary;
+        border-top: 2px solid $color-primary;
+      }
+    }
+
+    &-link {
+      &:after {
+        border-color: $color-primary;
+      }
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    &-dropdown {
+      .navbar-item {
+        border-top: 0;
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}
 
 </style>
