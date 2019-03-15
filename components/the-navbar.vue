@@ -6,19 +6,10 @@
       aria-label="main navigation"
     >
       <div class="container">
-        <div class="navbar-brand">
-          <a
-            role="button"
-            class="navbar-burger"
-            aria-label="menu"
-            aria-expanded="false"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-        <div class="navbar-menu">
+        <div
+          :class="{ 'navbar-menu--active': navMobileActive }"
+          class="navbar-menu"
+        >
           <div class="navbar-start">
             <NavigationItem
               v-for="(navItem, _id) in navigationLinks"
@@ -39,6 +30,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Strapi from 'strapi-sdk-javascript/build/main';
 
 const apiUrl = process.env.API_URL || 'http://localhost:1337';
@@ -48,6 +40,11 @@ export default {
   name: 'TheNavbar',
   components: {
     NavigationItem: () => import('@/components/navigation-item'),
+  },
+  computed: {
+    ...mapState({
+      navMobileActive: state => state.navigation.navMobileActive,
+    }),
   },
   asyncComputed: {
     async navigationLinks() {
@@ -89,7 +86,7 @@ export default {
       font-weight: 500;
       border-top: 2px solid transparent;
 
-      &.nuxt-link-active,
+      &.nuxt-link-exact-active,
       &:hover {
         color: $color-primary;
         border-top: 2px solid $color-primary;
@@ -103,6 +100,12 @@ export default {
 
       &:hover {
         color: $color-primary;
+      }
+    }
+
+    &-menu {
+      &--active {
+        display: flex;
       }
     }
 

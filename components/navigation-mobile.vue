@@ -3,7 +3,7 @@
     <button
       @click="toggleMenu"
       type="button"
-      :class="{ 'is-active' : menuIsActive }"
+      :class="{ 'is-active' : navMobileActive }"
       class="hamburger hamburger--squeeze"
     >
       <span class="hamburger-box">
@@ -14,16 +14,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'NavigationMobile',
-  data() {
-    return {
-      menuIsActive: false,
-    };
+  computed: {
+    ...mapState({
+      navMobileActive: state => state.navigation.navMobileActive,
+    }),
   },
   methods: {
     toggleMenu() {
-      this.menuIsActive = !this.menuIsActive;
+      this.$store.dispatch('toggleMobileNav');
     },
   },
 };
