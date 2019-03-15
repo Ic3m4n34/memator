@@ -1,9 +1,10 @@
 <template>
   <div class="the-navbar">
     <nav
-      class="navbar"
       role="navigation"
       aria-label="main navigation"
+      :class="{ 'navbar--active': navMobileActive }"
+      class="navbar"
     >
       <div class="container">
         <div
@@ -81,6 +82,17 @@ export default {
 
   .navbar {
     align-items: center;
+    @include mq(false, $navbar-breakpoint) {
+      max-height: 0;
+      min-height: 0;
+      overflow: hidden;
+      transition: max-height 1s;
+
+      &--active {
+        max-height: 60vh;
+        transition: max-height 1s;
+      }
+    }
 
     &-item {
       font-weight: 500;
@@ -104,8 +116,38 @@ export default {
     }
 
     &-menu {
-      &--active {
+      @include mq(false, $navbar-breakpoint) {
         display: flex;
+      }
+      &--active {
+        flex-direction: column;
+
+        .navbar-item {
+          &:hover {
+            border-top: none;
+          }
+
+          &.has-dropdown {
+            border: none;
+            .navbar-link {
+              display: none;
+            }
+          }
+        }
+
+        .navbar-dropdown {
+          padding: 0;
+          .navbar-item {
+            font-size: 16px;
+            line-height: 24px;
+            border-top: 1px solid transparent;
+            border-bottom: 1px solid transparent;
+          }
+        }
+
+        .nuxt-link-exact-active {
+          border-top: none;
+        }
       }
     }
 

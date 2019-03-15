@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation-mobile">
+  <div class="navigation-mobile-button">
     <button
       @click="toggleMenu"
       type="button"
@@ -17,7 +17,7 @@
 import { mapState } from 'vuex';
 
 export default {
-  name: 'NavigationMobile',
+  name: 'NavigationMobileButton',
   computed: {
     ...mapState({
       navMobileActive: state => state.navigation.navMobileActive,
@@ -32,11 +32,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'assets/scss/base';
 @import 'assets/scss/_hamburger.scss';
 
-.navigation-mobile {
+.navigation-mobile-button {
   .hamburger {
     user-select: none;
+
+    &.is-active {
+      .hamburger-inner {
+        background-color: $color-primary;
+        &:before,
+        &:after {
+          background-color: $color-primary;
+        }
+      }
+    }
     &:focus {
       outline: none;
     }

@@ -29,7 +29,7 @@
             </div>
           </div>
           <div class="level-right hidden-on-desktop">
-            <NavigationMobile />
+            <NavigationMobileButton />
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@ import Logo from '@/static/images/tierphysiotherapie-meyer-logo.png';
 export default {
   name: 'HeaderInfo',
   components: {
-    NavigationMobile: () => import('@/components/navigation-mobile'),
+    NavigationMobileButton: () => import('@/components/navigation-mobile-button'),
   },
   data() {
     return {
