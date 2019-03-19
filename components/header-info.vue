@@ -74,7 +74,7 @@ export default {
     display: flex;
     flex-direction: row;
     @include mq($navbar-breakpoint) {
-      display: block;
+      display: flex;
     }
   }
 
@@ -87,7 +87,7 @@ export default {
   .hidden-on-mobile {
     display: none;
     @include mq($navbar-breakpoint) {
-      display: block;
+      display: flex;
     }
   }
 }

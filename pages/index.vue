@@ -1,32 +1,38 @@
 <template>
-  <section class="container">
-    <div>
-      <h1 class="title">
-        tierphsiotherapie-meyer
-      </h1>
-      <h2 class="subtitle">
-        template for https://www.tierphysiotherapie-meyer.de
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
+  <div class="section-wrapper">
+    <StageImage
+      :img="'images/home/home-stage.jpg'"
+      :alt="'Stage Home'"
+    />
+    <section class="container">
+      <div>
+        <h1 class="title">
+          tierphsiotherapie-meyer
+        </h1>
+        <h2 class="subtitle">
+          template for https://www.tierphysiotherapie-meyer.de
+        </h2>
+        <div class="links">
+          <a
+            href="https://nuxtjs.org/"
+            target="_blank"
+            class="button--green"
+          >Documentation</a>
+          <a
+            href="https://github.com/nuxt/nuxt.js"
+            target="_blank"
+            class="button--grey"
+          >GitHub</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>
 export default {
   components: {
-
+    StageImage: () => import('@/components/stage-image'),
   },
 };
 </script>

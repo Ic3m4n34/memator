@@ -1,5 +1,8 @@
 <template>
-  <div class="navigation-item">
+  <div
+    class="navigation-item"
+    @click="closeNav"
+  >
     <nuxt-link
       v-if="!hasChildItems"
       :to="navigationItem.url"
@@ -24,6 +27,7 @@
           :to="childItem.url"
           :title="childItem.title"
           class="navbar-item"
+          @click="closeNav"
         >
           {{ childItem.label }}
         </nuxt-link>
@@ -44,6 +48,11 @@ export default {
   computed: {
     hasChildItems() {
       return this.navigationItem.childmenulinks.length > 0;
+    },
+  },
+  methods: {
+    closeNav() {
+      this.$store.dispatch('toggleMobileNav');
     },
   },
 };

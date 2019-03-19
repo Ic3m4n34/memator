@@ -123,6 +123,7 @@ export default {
         flex-direction: column;
 
         .navbar-item {
+          border-bottom: 1px solid #dddddd;
           &:hover {
             border-top: none;
           }
@@ -141,7 +142,7 @@ export default {
             font-size: 16px;
             line-height: 24px;
             border-top: 1px solid transparent;
-            border-bottom: 1px solid transparent;
+            border-bottom: 1px solid #dddddd;
           }
         }
 

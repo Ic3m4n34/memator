@@ -86,6 +86,14 @@ type createMenulinkPayload {
   menulink: Menulink
 }
 
+input createPageInput {
+  data: PageInput
+}
+
+type createPagePayload {
+  page: Page
+}
+
 input createRoleInput {
   data: RoleInput
 }
@@ -121,6 +129,14 @@ input deleteMenulinkInput {
 
 type deleteMenulinkPayload {
   menulink: Menulink
+}
+
+input deletePageInput {
+  where: InputID
+}
+
+type deletePagePayload {
+  page: Page
 }
 
 input deleteRoleInput {
@@ -164,6 +180,13 @@ input editMenulinkInput {
   url: String
   title: String
   childmenulinks: [ID]
+}
+
+input editPageInput {
+  Title: String
+  MetaDescription: String
+  StageImage: ID
+  StageImageAltText: String
 }
 
 input editRoleInput {
@@ -273,7 +296,7 @@ input MenulinkInput {
   childmenulinks: [ID]
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Childmenulink | createChildmenulinkPayload | updateChildmenulinkPayload | deleteChildmenulinkPayload | ChildmenulinkConnection | ChildmenulinkAggregator | ChildmenulinkGroupBy | ChildmenulinkConnection_id | ChildmenulinkConnectionCreatedAt | ChildmenulinkConnectionUpdatedAt | ChildmenulinkConnectionLabel | ChildmenulinkConnectionUrl | ChildmenulinkConnectionTitle | ChildmenulinkConnectionMenulink | Menulink | createMenulinkPayload | updateMenulinkPayload | deleteMenulinkPayload | MenulinkConnection | MenulinkAggregator | MenulinkGroupBy | MenulinkConnection_id | MenulinkConnectionCreatedAt | MenulinkConnectionUpdatedAt | MenulinkConnectionLabel | MenulinkConnectionUrl | MenulinkConnectionTitle | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Childmenulink | createChildmenulinkPayload | updateChildmenulinkPayload | deleteChildmenulinkPayload | ChildmenulinkConnection | ChildmenulinkAggregator | ChildmenulinkGroupBy | ChildmenulinkConnection_id | ChildmenulinkConnectionCreatedAt | ChildmenulinkConnectionUpdatedAt | ChildmenulinkConnectionLabel | ChildmenulinkConnectionUrl | ChildmenulinkConnectionTitle | ChildmenulinkConnectionMenulink | Menulink | createMenulinkPayload | updateMenulinkPayload | deleteMenulinkPayload | MenulinkConnection | MenulinkAggregator | MenulinkGroupBy | MenulinkConnection_id | MenulinkConnectionCreatedAt | MenulinkConnectionUpdatedAt | MenulinkConnectionLabel | MenulinkConnectionUrl | MenulinkConnectionTitle | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionTitle | PageConnectionMetaDescription | PageConnectionStageImage | PageConnectionStageImageAltText | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createChildmenulink(input: createChildmenulinkInput): createChildmenulinkPayload
@@ -282,6 +305,9 @@ type Mutation {
   createMenulink(input: createMenulinkInput): createMenulinkPayload
   updateMenulink(input: updateMenulinkInput): updateMenulinkPayload
   deleteMenulink(input: deleteMenulinkInput): deleteMenulinkPayload
+  createPage(input: createPageInput): createPagePayload
+  updatePage(input: updatePageInput): updatePagePayload
+  deletePage(input: deletePageInput): deletePagePayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -303,6 +329,78 @@ type Mutation {
   upload(refId: ID, ref: String, source: String, file: Upload!): UploadFile!
 }
 
+type Page {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  Title: String
+  MetaDescription: String
+  StageImage: UploadFile
+  StageImageAltText: String
+}
+
+type PageAggregator {
+  count: Int
+}
+
+type PageConnection {
+  values: [Page]
+  groupBy: PageGroupBy
+  aggregate: PageAggregator
+}
+
+type PageConnection_id {
+  key: ID
+  connection: PageConnection
+}
+
+type PageConnectionCreatedAt {
+  key: DateTime
+  connection: PageConnection
+}
+
+type PageConnectionMetaDescription {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionStageImage {
+  key: ID
+  connection: PageConnection
+}
+
+type PageConnectionStageImageAltText {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionTitle {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionUpdatedAt {
+  key: DateTime
+  connection: PageConnection
+}
+
+type PageGroupBy {
+  _id: [PageConnection_id]
+  createdAt: [PageConnectionCreatedAt]
+  updatedAt: [PageConnectionUpdatedAt]
+  Title: [PageConnectionTitle]
+  MetaDescription: [PageConnectionMetaDescription]
+  StageImage: [PageConnectionStageImage]
+  StageImageAltText: [PageConnectionStageImageAltText]
+}
+
+input PageInput {
+  Title: String
+  MetaDescription: String
+  StageImage: ID
+  StageImageAltText: String
+}
+
 type Query {
   childmenulink(id: ID!): Childmenulink
   childmenulinks(sort: String, limit: Int, start: Int, where: JSON): [Childmenulink]
@@ -310,6 +408,9 @@ type Query {
   menulink(id: ID!): Menulink
   menulinks(sort: String, limit: Int, start: Int, where: JSON): [Menulink]
   menulinksConnection(sort: String, limit: Int, start: Int, where: JSON): MenulinkConnection
+  page(id: ID!): Page
+  pages(sort: String, limit: Int, start: Int, where: JSON): [Page]
+  pagesConnection(sort: String, limit: Int, start: Int, where: JSON): PageConnection
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!): UsersPermissionsRole
@@ -349,6 +450,15 @@ input updateMenulinkInput {
 
 type updateMenulinkPayload {
   menulink: Menulink
+}
+
+input updatePageInput {
+  where: InputID
+  data: editPageInput
+}
+
+type updatePagePayload {
+  page: Page
 }
 
 input updateRoleInput {
