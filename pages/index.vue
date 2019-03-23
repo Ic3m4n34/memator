@@ -3,7 +3,16 @@
     <StageImage
       :img="'images/home/home-stage.jpg'"
       :alt="'Stage Home'"
-    />
+    >
+      <template v-slot:stageText>
+        <h1 class="h1">
+          Tierphysiotherapie Meyer
+        </h1>
+        <p class="text">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+        </p>
+      </template>
+    </StageImage>
     <section class="container">
       <div>
         <h1 class="title">

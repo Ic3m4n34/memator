@@ -25,3 +25,4 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 ## next steps
 * [ ] cache Navigation
 * [ ] sticky header
+* [ ] Headline Component

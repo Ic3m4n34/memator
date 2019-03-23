@@ -1,0 +1,6 @@
+@mixin font-size($size: 18px, $line-height: 24px) {
+  font-size: $size;
+  font-size: calculate-rem($size);
+  line-height: $line-height;
+  line-height: calculate-rem($line-height);
+}
