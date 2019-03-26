@@ -1,13 +1,13 @@
 <template>
   <div class="section-wrapper">
     <StageImage
-      :img="'images/home/home-stage.jpg'"
-      :alt="'Stage Home'"
+      :img="StageImage"
+      :alt="StageImageAltText"
     >
-      <template v-slot:stageText>
-        <h1 class="h1">
-          Tierphysiotherapie Meyer
-        </h1>
+      <template v-slot:headline>
+        Tierphysiotherapie Meyer
+      </template>
+      <template v-slot:stageDescription>
         <p class="text">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
         </p>
@@ -39,10 +39,13 @@
 </template>
 
 <script>
+import PageMixin from '@/mixins/page';
+
 export default {
   components: {
     StageImage: () => import('@/components/stage-image'),
   },
+  mixins: [PageMixin],
 };
 </script>
 

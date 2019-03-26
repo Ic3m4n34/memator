@@ -9,7 +9,10 @@
         />
         <div class="stage-image__text-container">
           <div class="stage-image__text">
-            <slot name="stageText"></slot>
+            <h1 class="h1">
+              <slot name="headline" />
+            </h1>
+            <slot name="stageDescription"></slot>
           </div>
         </div>
       </div>
@@ -40,7 +43,12 @@ export default {
   h1 {
     color: #ffffff;
     font-weight: 600;
-    @include font-size(40px, 42px);
+    @include font-size(26px, 32px);
+    margin: 0 0 12px 0;
+    @include mq($mq-medium) {
+      @include font-size(40px, 42px);
+      margin: 24px 0;
+    }
   }
 
   .text {
@@ -61,7 +69,7 @@ export default {
     width: auto;
     height: 40vh;
     max-width: none;
-    @include mq($mq-medium) {
+    @include mq(400px) {
       height: auto;
       width: 100%;
       max-width: 100%;
@@ -70,7 +78,17 @@ export default {
 
   &__text {
     text-align: center;
-    width: 40%;
+    padding: 24px;
+    width: 100%;
+    @include mq($mq-medium) {
+      width: 80%;
+    }
+    @include mq(800px) {
+      width: 70%;
+    }
+    @include mq($mq-large) {
+      width: 60%;
+    }
   }
 
   &__text-container {

@@ -28,4 +28,10 @@ export default {
 
 <style lang="scss" scoped>
 
+.headline {
+  h1 {
+    margin: 24px 0;
+  }
+}
+
 </style>
