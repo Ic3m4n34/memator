@@ -34,6 +34,8 @@
 import { mapState } from 'vuex';
 import Strapi from 'strapi-sdk-javascript/build/main';
 
+const cache = require('memory-cache');
+
 const apiUrl = process.env.API_URL || 'http://localhost:1337';
 const strapi = new Strapi(apiUrl);
 
@@ -68,8 +70,14 @@ export default {
           `,
         },
       });
+      // cache.put('menulinks', menulinks);
+      // console.log('#', cache.get('menulinks'));
       return menulinks;
     },
+  },
+  mounted() {
+    const links = cache.get('menulinks');
+    console.log(links);
   },
 };
 </script>

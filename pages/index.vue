@@ -1,8 +1,8 @@
 <template>
   <div class="section-wrapper">
     <StageImage
-      :img="StageImage"
-      :alt="StageImageAltText"
+      :img="stageImage"
+      :alt="stageImageAltText"
     >
       <template v-slot:headline>
         Tierphysiotherapie Meyer
@@ -13,27 +13,8 @@
         </p>
       </template>
     </StageImage>
-    <section class="container">
-      <div>
-        <h1 class="title">
-          tierphsiotherapie-meyer
-        </h1>
-        <h2 class="subtitle">
-          template for https://www.tierphysiotherapie-meyer.de
-        </h2>
-        <div class="links">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            class="button--green"
-          >Documentation</a>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            class="button--grey"
-          >GitHub</a>
-        </div>
-      </div>
+    <section class="section">
+      <AboutShowcase />
     </section>
   </div>
 </template>
@@ -43,6 +24,7 @@ import PageMixin from '@/mixins/page';
 
 export default {
   components: {
+    AboutShowcase: () => import('@/components/about-showcase'),
     StageImage: () => import('@/components/stage-image'),
   },
   mixins: [PageMixin],

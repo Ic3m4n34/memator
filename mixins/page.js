@@ -13,28 +13,6 @@ export default {
       stageImageAltText: null,
     };
   },
-  asyncComputed: {
-    /* async pageContent() {
-      const { data } = await strapi.request('post', '/graphql', {
-        data: {
-          query: `
-            query {
-              page(id: "5c914997620d1f860014dd7f") {
-                Title,
-                MetaDescription,
-                StageImage {
-                  name,
-                  url,
-                },
-                StageImageAltText,
-              }
-            }
-          `,
-        },
-      });
-      return data.page;
-    }, */
-  },
   methods: {
     async fetchPageData() {
       const { data } = await strapi.request('post', '/graphql', {
@@ -54,10 +32,10 @@ export default {
           `,
         },
       });
-      console.log(data);
+      console.log(data.page.StageImage);
       this.title = data.page.Title;
       this.metaDescription = data.page.MetaDescription;
-      this.stageImage = data.page.StageImage.url;
+      this.stageImage = `${apiUrl}/${data.page.StageImage.url}`;
       this.stageImageAltText = data.page.StageImageAltText;
     },
   },
