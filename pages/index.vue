@@ -1,8 +1,8 @@
 <template>
   <div class="section-wrapper">
     <StageImage
-      :img="stageImage"
-      :alt="stageImageAltText"
+      :img="'images/home/home-stage.jpg'"
+      :alt="'Frau mit Hund - Tierphysiotherapie Meyer'"
     >
       <template v-slot:headline>
         Tierphysiotherapie Meyer
@@ -14,7 +14,9 @@
       </template>
     </StageImage>
     <section class="section">
-      <AboutShowcase />
+      <div class="container">
+        <AboutShowcase />
+      </div>
     </section>
   </div>
 </template>

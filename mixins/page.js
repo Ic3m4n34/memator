@@ -32,10 +32,10 @@ export default {
           `,
         },
       });
-      console.log(data.page.StageImage);
       this.title = data.page.Title;
       this.metaDescription = data.page.MetaDescription;
-      this.stageImage = `${apiUrl}/${data.page.StageImage.url}`;
+      this.stageImage = `${apiUrl}${data.page.StageImage.url}`;
+      console.log('#', this.stageImage);
       this.stageImageAltText = data.page.StageImageAltText;
     },
   },
