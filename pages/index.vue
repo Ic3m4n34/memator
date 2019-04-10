@@ -18,6 +18,11 @@
         <AboutShowcase />
       </div>
     </section>
+    <section class="section">
+      <div class="container">
+        <Gallery />
+      </div>
+    </section>
   </div>
 </template>
 
@@ -27,6 +32,7 @@ import PageMixin from '@/mixins/page';
 export default {
   components: {
     AboutShowcase: () => import('@/components/about-showcase'),
+    Gallery: () => import('@/components/gallery'),
     StageImage: () => import('@/components/stage-image'),
   },
   mixins: [PageMixin],
