@@ -8,7 +8,7 @@
 export default {
   name: 'Gallery',
   components: {
-    // HeadingWithPaw: () => import('@/components/heading-with-paw'),
+    HeadingWithPaw: () => import('@/components/heading-with-paw'),
   },
 };
 </script>
