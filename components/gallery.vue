@@ -1,6 +1,16 @@
 <template>
   <div class="gallery">
-    <HeadingWithPaw :headline="'Galerie'" />
+    <div class="gallery__headline">
+      <HeadingWithPaw :headline="'Galerie'" />
+    </div>
+    <div class="gallery__images">
+      <GalleryImage
+        v-for="(image, index) in galleryImages"
+        :key="image._id"
+        :image="image"
+        :image-size="imageSize(index)"
+      />
+    </div>
   </div>
 </template>
 
@@ -19,8 +29,20 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      galleryImages: null,
+    };
+  },
   components: {
+    GalleryImage: () => import('@/components/gallery-image'),
     HeadingWithPaw: () => import('@/components/heading-with-paw'),
+  },
+  methods: {
+    imageSize(index) {
+      if ((index + 1) % 3 === 0) return 'big';
+      return 'small';
+    },
   },
   asyncComputed: {
     async imageGallery() {
@@ -36,6 +58,7 @@ export default {
                 }
                 imageDescription
                 altText
+                _id
               }
             }
           }
@@ -44,6 +67,7 @@ export default {
       });
       const { galleries } = data;
       const imageGallery = galleries.filter(gallery => gallery._id === this.galleryId)[0]; // eslint-disable-line no-underscore-dangle
+      this.galleryImages = imageGallery.galleryimages;
       return imageGallery;
     },
   },
@@ -53,7 +77,18 @@ export default {
 <style lang="scss" scoped>
 
 .gallery {
+  display: flex;
+  flex-direction: column;
 
+  &__images {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    justify-items: stretch;
+    align-items: stretch;
+  }
 }
 
 </style>
