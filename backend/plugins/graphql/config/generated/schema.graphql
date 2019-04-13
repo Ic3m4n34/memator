@@ -78,6 +78,22 @@ type createChildmenulinkPayload {
   childmenulink: Childmenulink
 }
 
+input createGalleryimageInput {
+  data: GalleryimageInput
+}
+
+type createGalleryimagePayload {
+  galleryimage: Galleryimage
+}
+
+input createGalleryInput {
+  data: GalleryInput
+}
+
+type createGalleryPayload {
+  gallery: Gallery
+}
+
 input createMenulinkInput {
   data: MenulinkInput
 }
@@ -121,6 +137,22 @@ input deleteChildmenulinkInput {
 
 type deleteChildmenulinkPayload {
   childmenulink: Childmenulink
+}
+
+input deleteGalleryimageInput {
+  where: InputID
+}
+
+type deleteGalleryimagePayload {
+  galleryimage: Galleryimage
+}
+
+input deleteGalleryInput {
+  where: InputID
+}
+
+type deleteGalleryPayload {
+  gallery: Gallery
 }
 
 input deleteMenulinkInput {
@@ -175,6 +207,18 @@ input editFileInput {
   related: [ID]
 }
 
+input editGalleryimageInput {
+  image: ID
+  altText: String
+  imageDescription: String
+  gallery: [ID]
+}
+
+input editGalleryInput {
+  galleryimages: [ID]
+  galleryName: String
+}
+
 input editMenulinkInput {
   label: String
   url: String
@@ -219,6 +263,122 @@ input FileInput {
   provider: String!
   public_id: String
   related: [ID]
+}
+
+type Gallery {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  galleryName: String
+  galleryimages(sort: String, limit: Int, start: Int, where: JSON): [Galleryimage]
+}
+
+type GalleryAggregator {
+  count: Int
+}
+
+type GalleryConnection {
+  values: [Gallery]
+  groupBy: GalleryGroupBy
+  aggregate: GalleryAggregator
+}
+
+type GalleryConnection_id {
+  key: ID
+  connection: GalleryConnection
+}
+
+type GalleryConnectionCreatedAt {
+  key: DateTime
+  connection: GalleryConnection
+}
+
+type GalleryConnectionGalleryName {
+  key: String
+  connection: GalleryConnection
+}
+
+type GalleryConnectionUpdatedAt {
+  key: DateTime
+  connection: GalleryConnection
+}
+
+type GalleryGroupBy {
+  _id: [GalleryConnection_id]
+  createdAt: [GalleryConnectionCreatedAt]
+  updatedAt: [GalleryConnectionUpdatedAt]
+  galleryName: [GalleryConnectionGalleryName]
+}
+
+type Galleryimage {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  image: UploadFile
+  altText: String
+  imageDescription: String
+  gallery(sort: String, limit: Int, start: Int, where: JSON): [Gallery]
+}
+
+type GalleryimageAggregator {
+  count: Int
+}
+
+type GalleryimageConnection {
+  values: [Galleryimage]
+  groupBy: GalleryimageGroupBy
+  aggregate: GalleryimageAggregator
+}
+
+type GalleryimageConnection_id {
+  key: ID
+  connection: GalleryimageConnection
+}
+
+type GalleryimageConnectionAltText {
+  key: String
+  connection: GalleryimageConnection
+}
+
+type GalleryimageConnectionCreatedAt {
+  key: DateTime
+  connection: GalleryimageConnection
+}
+
+type GalleryimageConnectionImage {
+  key: ID
+  connection: GalleryimageConnection
+}
+
+type GalleryimageConnectionImageDescription {
+  key: String
+  connection: GalleryimageConnection
+}
+
+type GalleryimageConnectionUpdatedAt {
+  key: DateTime
+  connection: GalleryimageConnection
+}
+
+type GalleryimageGroupBy {
+  _id: [GalleryimageConnection_id]
+  createdAt: [GalleryimageConnectionCreatedAt]
+  updatedAt: [GalleryimageConnectionUpdatedAt]
+  image: [GalleryimageConnectionImage]
+  altText: [GalleryimageConnectionAltText]
+  imageDescription: [GalleryimageConnectionImageDescription]
+}
+
+input GalleryimageInput {
+  image: ID
+  altText: String
+  imageDescription: String
+  gallery: [ID]
+}
+
+input GalleryInput {
+  galleryimages: [ID]
+  galleryName: String
 }
 
 input InputID {
@@ -296,12 +456,18 @@ input MenulinkInput {
   childmenulinks: [ID]
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Childmenulink | createChildmenulinkPayload | updateChildmenulinkPayload | deleteChildmenulinkPayload | ChildmenulinkConnection | ChildmenulinkAggregator | ChildmenulinkGroupBy | ChildmenulinkConnection_id | ChildmenulinkConnectionCreatedAt | ChildmenulinkConnectionUpdatedAt | ChildmenulinkConnectionLabel | ChildmenulinkConnectionUrl | ChildmenulinkConnectionTitle | ChildmenulinkConnectionMenulink | Menulink | createMenulinkPayload | updateMenulinkPayload | deleteMenulinkPayload | MenulinkConnection | MenulinkAggregator | MenulinkGroupBy | MenulinkConnection_id | MenulinkConnectionCreatedAt | MenulinkConnectionUpdatedAt | MenulinkConnectionLabel | MenulinkConnectionUrl | MenulinkConnectionTitle | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionTitle | PageConnectionMetaDescription | PageConnectionStageImage | PageConnectionStageImageAltText | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Childmenulink | createChildmenulinkPayload | updateChildmenulinkPayload | deleteChildmenulinkPayload | ChildmenulinkConnection | ChildmenulinkAggregator | ChildmenulinkGroupBy | ChildmenulinkConnection_id | ChildmenulinkConnectionCreatedAt | ChildmenulinkConnectionUpdatedAt | ChildmenulinkConnectionLabel | ChildmenulinkConnectionUrl | ChildmenulinkConnectionTitle | ChildmenulinkConnectionMenulink | Gallery | createGalleryPayload | updateGalleryPayload | deleteGalleryPayload | GalleryConnection | GalleryAggregator | GalleryGroupBy | GalleryConnection_id | GalleryConnectionCreatedAt | GalleryConnectionUpdatedAt | GalleryConnectionGalleryName | Galleryimage | createGalleryimagePayload | updateGalleryimagePayload | deleteGalleryimagePayload | GalleryimageConnection | GalleryimageAggregator | GalleryimageGroupBy | GalleryimageConnection_id | GalleryimageConnectionCreatedAt | GalleryimageConnectionUpdatedAt | GalleryimageConnectionImage | GalleryimageConnectionAltText | GalleryimageConnectionImageDescription | Menulink | createMenulinkPayload | updateMenulinkPayload | deleteMenulinkPayload | MenulinkConnection | MenulinkAggregator | MenulinkGroupBy | MenulinkConnection_id | MenulinkConnectionCreatedAt | MenulinkConnectionUpdatedAt | MenulinkConnectionLabel | MenulinkConnectionUrl | MenulinkConnectionTitle | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionTitle | PageConnectionMetaDescription | PageConnectionStageImage | PageConnectionStageImageAltText | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createChildmenulink(input: createChildmenulinkInput): createChildmenulinkPayload
   updateChildmenulink(input: updateChildmenulinkInput): updateChildmenulinkPayload
   deleteChildmenulink(input: deleteChildmenulinkInput): deleteChildmenulinkPayload
+  createGallery(input: createGalleryInput): createGalleryPayload
+  updateGallery(input: updateGalleryInput): updateGalleryPayload
+  deleteGallery(input: deleteGalleryInput): deleteGalleryPayload
+  createGalleryimage(input: createGalleryimageInput): createGalleryimagePayload
+  updateGalleryimage(input: updateGalleryimageInput): updateGalleryimagePayload
+  deleteGalleryimage(input: deleteGalleryimageInput): deleteGalleryimagePayload
   createMenulink(input: createMenulinkInput): createMenulinkPayload
   updateMenulink(input: updateMenulinkInput): updateMenulinkPayload
   deleteMenulink(input: deleteMenulinkInput): deleteMenulinkPayload
@@ -405,6 +571,12 @@ type Query {
   childmenulink(id: ID!): Childmenulink
   childmenulinks(sort: String, limit: Int, start: Int, where: JSON): [Childmenulink]
   childmenulinksConnection(sort: String, limit: Int, start: Int, where: JSON): ChildmenulinkConnection
+  gallery(id: ID!): Gallery
+  galleries(sort: String, limit: Int, start: Int, where: JSON): [Gallery]
+  galleriesConnection(sort: String, limit: Int, start: Int, where: JSON): GalleryConnection
+  galleryimage(id: ID!): Galleryimage
+  galleryimages(sort: String, limit: Int, start: Int, where: JSON): [Galleryimage]
+  galleryimagesConnection(sort: String, limit: Int, start: Int, where: JSON): GalleryimageConnection
   menulink(id: ID!): Menulink
   menulinks(sort: String, limit: Int, start: Int, where: JSON): [Menulink]
   menulinksConnection(sort: String, limit: Int, start: Int, where: JSON): MenulinkConnection
@@ -441,6 +613,24 @@ input updateChildmenulinkInput {
 
 type updateChildmenulinkPayload {
   childmenulink: Childmenulink
+}
+
+input updateGalleryimageInput {
+  where: InputID
+  data: editGalleryimageInput
+}
+
+type updateGalleryimagePayload {
+  galleryimage: Galleryimage
+}
+
+input updateGalleryInput {
+  where: InputID
+  data: editGalleryInput
+}
+
+type updateGalleryPayload {
+  gallery: Gallery
 }
 
 input updateMenulinkInput {

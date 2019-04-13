@@ -20,7 +20,7 @@
     </section>
     <section class="section">
       <div class="container">
-        <Gallery />
+        <Gallery :gallery-id="'5cb1ea542a2c4c0c3612e481'" />
       </div>
     </section>
   </div>

@@ -1,17 +1,18 @@
 {
-  "plugins": ["dynamic-import-node"],
+  "plugins": ["@babel/plugin-syntax-dynamic-import"],
+  "presets": [
+    ["@babel/env", {
+      "modules": false
+    }]
+  ],
   "env": {
     "test": {
       "presets": [
-        [
-          "@babel/preset-env",
-          {
-            "targets": {
-              "node": "current"
-            }
+        ["@babel/env", {
+          "targets": {
+            "node": "current"
           }
-        ],
-        "@nuxt/babel-preset-app"
+        }]
       ]
     }
   }

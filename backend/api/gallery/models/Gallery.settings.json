@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "gallery",
+  "info": {
+    "name": "gallery",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "galleryimages": {
+      "collection": "galleryimage",
+      "via": "gallery",
+      "dominant": true
+    },
+    "galleryName": {
+      "default": "",
+      "type": "string"
+    }
+  }
+}

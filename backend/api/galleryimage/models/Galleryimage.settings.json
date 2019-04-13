@@ -1,0 +1,31 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "galleryimage",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "altText": {
+      "default": "",
+      "type": "string"
+    },
+    "imageDescription": {
+      "default": "",
+      "type": "text"
+    },
+    "gallery": {
+      "collection": "gallery",
+      "via": "galleryimages"
+    }
+  }
+}
