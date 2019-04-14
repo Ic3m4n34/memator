@@ -8,7 +8,7 @@
         v-for="(image, index) in galleryImages"
         :key="image._id"
         :image="image"
-        :image-size="imageSize(index)"
+        :class="imageSize(index)"
       />
     </div>
   </div>
@@ -40,8 +40,8 @@ export default {
   },
   methods: {
     imageSize(index) {
-      if ((index + 1) % 3 === 0) return 'big';
-      return 'small';
+      if ((index + 1) % 3 === 0) return 'gallery__image--big';
+      return 'gallery__image--small';
     },
   },
   asyncComputed: {
@@ -88,6 +88,7 @@ export default {
     grid-row-gap: 20px;
     justify-items: stretch;
     align-items: stretch;
+    margin-top: 48px;
   }
 }
 
