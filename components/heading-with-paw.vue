@@ -37,9 +37,12 @@ export default {
 .heading-with-paw {
   &__headline {
     margin-top: 24px;
-    @include font-size(40px, 42px);
+    @include font-size(26px, 28px);
     color: #3a3a3a;
     font-weight: 500;
+    @include mq($mq-medium) {
+      @include font-size(40px, 42px);
+    }
   }
 
   &__image {

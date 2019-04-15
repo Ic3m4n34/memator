@@ -23,6 +23,11 @@
         <Gallery :gallery-id="'5cb1ea542a2c4c0c3612e481'" />
       </div>
     </section>
+    <section class="section">
+      <div class="container">
+        <TherapyTeaser />
+      </div>
+    </section>
   </div>
 </template>
 
@@ -34,6 +39,7 @@ export default {
     AboutShowcase: () => import('@/components/about-showcase'),
     Gallery: () => import('@/components/gallery'),
     StageImage: () => import('@/components/stage-image'),
+    TherapyTeaser: () => import('@/components/therapy-teaser'),
   },
   mixins: [PageMixin],
 };
