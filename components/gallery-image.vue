@@ -4,7 +4,11 @@
       @click="showModal"
       :src="imageSrc"
       :alt="image.altText"
+      class="gallery-image__image"
     />
+    <div class="gallery-image__layer">
+      {{ image.imageDescription }}
+    </div>
     <Modal
       :name="`imageModal-${image._id}`"
       :height="'auto'"
@@ -48,6 +52,9 @@ export default {
       closeIcon,
     };
   },
+  mounted() {
+    console.log(this.image);
+  },
   computed: {
     ...mapGetters({
       isMobileScreen: 'viewport/isMobileScreen',
@@ -73,12 +80,26 @@ export default {
 <style lang="scss" scoped>
 
   .gallery-image {
+    position: relative;
     &__close-icon {
       position: absolute;
       top: 15px;
       right: 15px;
       height: 32px;
       width: 32px;
+    }
+
+    &__image {
+      position: relative;
+      display: block;
+    }
+
+    &__layer {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0 ,0, 0.5);
     }
 
     &__modal-image {
