@@ -1,3 +1,83 @@
+type Blogarticle {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  headline: String
+  publishDate: DateTime
+  blogImage: UploadFile
+  description: String
+  blogContent: String
+}
+
+type BlogarticleAggregator {
+  count: Int
+}
+
+type BlogarticleConnection {
+  values: [Blogarticle]
+  groupBy: BlogarticleGroupBy
+  aggregate: BlogarticleAggregator
+}
+
+type BlogarticleConnection_id {
+  key: ID
+  connection: BlogarticleConnection
+}
+
+type BlogarticleConnectionBlogContent {
+  key: String
+  connection: BlogarticleConnection
+}
+
+type BlogarticleConnectionBlogImage {
+  key: ID
+  connection: BlogarticleConnection
+}
+
+type BlogarticleConnectionCreatedAt {
+  key: DateTime
+  connection: BlogarticleConnection
+}
+
+type BlogarticleConnectionDescription {
+  key: String
+  connection: BlogarticleConnection
+}
+
+type BlogarticleConnectionHeadline {
+  key: String
+  connection: BlogarticleConnection
+}
+
+type BlogarticleConnectionPublishDate {
+  key: DateTime
+  connection: BlogarticleConnection
+}
+
+type BlogarticleConnectionUpdatedAt {
+  key: DateTime
+  connection: BlogarticleConnection
+}
+
+type BlogarticleGroupBy {
+  _id: [BlogarticleConnection_id]
+  createdAt: [BlogarticleConnectionCreatedAt]
+  updatedAt: [BlogarticleConnectionUpdatedAt]
+  headline: [BlogarticleConnectionHeadline]
+  publishDate: [BlogarticleConnectionPublishDate]
+  blogImage: [BlogarticleConnectionBlogImage]
+  description: [BlogarticleConnectionDescription]
+  blogContent: [BlogarticleConnectionBlogContent]
+}
+
+input BlogarticleInput {
+  headline: String
+  publishDate: DateTime
+  blogImage: ID
+  description: String
+  blogContent: String
+}
+
 type Childmenulink {
   _id: ID!
   createdAt: DateTime!
@@ -70,6 +150,14 @@ input ChildmenulinkInput {
   menulink: ID
 }
 
+input createBlogarticleInput {
+  data: BlogarticleInput
+}
+
+type createBlogarticlePayload {
+  blogarticle: Blogarticle
+}
+
 input createChildmenulinkInput {
   data: ChildmenulinkInput
 }
@@ -131,6 +219,14 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
+input deleteBlogarticleInput {
+  where: InputID
+}
+
+type deleteBlogarticlePayload {
+  blogarticle: Blogarticle
+}
+
 input deleteChildmenulinkInput {
   where: InputID
 }
@@ -185,6 +281,14 @@ input deleteUserInput {
 
 type deleteUserPayload {
   user: UsersPermissionsUser
+}
+
+input editBlogarticleInput {
+  headline: String
+  publishDate: DateTime
+  blogImage: ID
+  description: String
+  blogContent: String
 }
 
 input editChildmenulinkInput {
@@ -456,9 +560,12 @@ input MenulinkInput {
   childmenulinks: [ID]
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Childmenulink | createChildmenulinkPayload | updateChildmenulinkPayload | deleteChildmenulinkPayload | ChildmenulinkConnection | ChildmenulinkAggregator | ChildmenulinkGroupBy | ChildmenulinkConnection_id | ChildmenulinkConnectionCreatedAt | ChildmenulinkConnectionUpdatedAt | ChildmenulinkConnectionLabel | ChildmenulinkConnectionUrl | ChildmenulinkConnectionTitle | ChildmenulinkConnectionMenulink | Gallery | createGalleryPayload | updateGalleryPayload | deleteGalleryPayload | GalleryConnection | GalleryAggregator | GalleryGroupBy | GalleryConnection_id | GalleryConnectionCreatedAt | GalleryConnectionUpdatedAt | GalleryConnectionGalleryName | Galleryimage | createGalleryimagePayload | updateGalleryimagePayload | deleteGalleryimagePayload | GalleryimageConnection | GalleryimageAggregator | GalleryimageGroupBy | GalleryimageConnection_id | GalleryimageConnectionCreatedAt | GalleryimageConnectionUpdatedAt | GalleryimageConnectionImage | GalleryimageConnectionAltText | GalleryimageConnectionImageDescription | Menulink | createMenulinkPayload | updateMenulinkPayload | deleteMenulinkPayload | MenulinkConnection | MenulinkAggregator | MenulinkGroupBy | MenulinkConnection_id | MenulinkConnectionCreatedAt | MenulinkConnectionUpdatedAt | MenulinkConnectionLabel | MenulinkConnectionUrl | MenulinkConnectionTitle | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionTitle | PageConnectionMetaDescription | PageConnectionStageImage | PageConnectionStageImageAltText | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Blogarticle | createBlogarticlePayload | updateBlogarticlePayload | deleteBlogarticlePayload | BlogarticleConnection | BlogarticleAggregator | BlogarticleGroupBy | BlogarticleConnection_id | BlogarticleConnectionCreatedAt | BlogarticleConnectionUpdatedAt | BlogarticleConnectionHeadline | BlogarticleConnectionPublishDate | BlogarticleConnectionBlogImage | BlogarticleConnectionDescription | BlogarticleConnectionBlogContent | Childmenulink | createChildmenulinkPayload | updateChildmenulinkPayload | deleteChildmenulinkPayload | ChildmenulinkConnection | ChildmenulinkAggregator | ChildmenulinkGroupBy | ChildmenulinkConnection_id | ChildmenulinkConnectionCreatedAt | ChildmenulinkConnectionUpdatedAt | ChildmenulinkConnectionLabel | ChildmenulinkConnectionUrl | ChildmenulinkConnectionTitle | ChildmenulinkConnectionMenulink | Gallery | createGalleryPayload | updateGalleryPayload | deleteGalleryPayload | GalleryConnection | GalleryAggregator | GalleryGroupBy | GalleryConnection_id | GalleryConnectionCreatedAt | GalleryConnectionUpdatedAt | GalleryConnectionGalleryName | Galleryimage | createGalleryimagePayload | updateGalleryimagePayload | deleteGalleryimagePayload | GalleryimageConnection | GalleryimageAggregator | GalleryimageGroupBy | GalleryimageConnection_id | GalleryimageConnectionCreatedAt | GalleryimageConnectionUpdatedAt | GalleryimageConnectionImage | GalleryimageConnectionAltText | GalleryimageConnectionImageDescription | Menulink | createMenulinkPayload | updateMenulinkPayload | deleteMenulinkPayload | MenulinkConnection | MenulinkAggregator | MenulinkGroupBy | MenulinkConnection_id | MenulinkConnectionCreatedAt | MenulinkConnectionUpdatedAt | MenulinkConnectionLabel | MenulinkConnectionUrl | MenulinkConnectionTitle | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionTitle | PageConnectionMetaDescription | PageConnectionStageImage | PageConnectionStageImageAltText | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
+  createBlogarticle(input: createBlogarticleInput): createBlogarticlePayload
+  updateBlogarticle(input: updateBlogarticleInput): updateBlogarticlePayload
+  deleteBlogarticle(input: deleteBlogarticleInput): deleteBlogarticlePayload
   createChildmenulink(input: createChildmenulinkInput): createChildmenulinkPayload
   updateChildmenulink(input: updateChildmenulinkInput): updateChildmenulinkPayload
   deleteChildmenulink(input: deleteChildmenulinkInput): deleteChildmenulinkPayload
@@ -568,6 +675,9 @@ input PageInput {
 }
 
 type Query {
+  blogarticle(id: ID!): Blogarticle
+  blogarticles(sort: String, limit: Int, start: Int, where: JSON): [Blogarticle]
+  blogarticlesConnection(sort: String, limit: Int, start: Int, where: JSON): BlogarticleConnection
   childmenulink(id: ID!): Childmenulink
   childmenulinks(sort: String, limit: Int, start: Int, where: JSON): [Childmenulink]
   childmenulinksConnection(sort: String, limit: Int, start: Int, where: JSON): ChildmenulinkConnection
@@ -604,6 +714,15 @@ input RoleInput {
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input updateBlogarticleInput {
+  where: InputID
+  data: editBlogarticleInput
+}
+
+type updateBlogarticlePayload {
+  blogarticle: Blogarticle
 }
 
 input updateChildmenulinkInput {

@@ -1,0 +1,35 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "blogarticle",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "headline": {
+      "default": "",
+      "type": "string"
+    },
+    "publishDate": {
+      "default": "",
+      "type": "date"
+    },
+    "blogImage": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    },
+    "blogContent": {
+      "default": "",
+      "type": "text"
+    }
+  }
+}

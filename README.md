@@ -26,3 +26,4 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 * [ ] cache Navigation
 * [ ] sticky header
 * [x] Headline Component
+* [ ] fetch data on serverside
