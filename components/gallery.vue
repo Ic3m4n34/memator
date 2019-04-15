@@ -75,6 +75,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'assets/scss/base';
 
 .gallery {
   display: flex;
@@ -82,13 +83,20 @@ export default {
 
   &__images {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
     justify-items: stretch;
     align-items: stretch;
     margin-top: 48px;
+
+    @include mq($mq-medium) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-column-gap: 20px;
+      grid-row-gap: 20px;
+    }
   }
 }
 
