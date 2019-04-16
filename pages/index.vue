@@ -28,20 +28,54 @@
         <TherapyTeaser />
       </div>
     </section>
+    <section class="section">
+      <div class="container">
+        <BlogArticleTeasers :teasers="blogTeaserData" />
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 import PageMixin from '@/mixins/page';
+import Strapi from 'strapi-sdk-javascript/build/main';
+
+const apiUrl = process.env.API_URL || 'http://localhost:1337';
+
+const strapi = new Strapi(apiUrl);
 
 export default {
   components: {
     AboutShowcase: () => import('@/components/about-showcase'),
+    BlogArticleTeasers: () => import('@/components/blog-article-teasers'),
     Gallery: () => import('@/components/gallery'),
     StageImage: () => import('@/components/stage-image'),
     TherapyTeaser: () => import('@/components/therapy-teaser'),
   },
   mixins: [PageMixin],
+  async asyncData() {
+    // fetch blogTeaserData
+    const { data } = await strapi.request('post', '/graphql', {
+      data: {
+        query: `query {
+          blogarticles {
+            _id
+            headline
+            publishDate
+            blogImage {
+              _id
+              url
+            }
+            description
+          }
+        }
+        `,
+      },
+    });
+    return {
+      blogTeaserData: data.blogarticles,
+    };
+  },
 };
 </script>
 
