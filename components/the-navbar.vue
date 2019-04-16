@@ -34,8 +34,6 @@
 import { mapState } from 'vuex';
 import Strapi from 'strapi-sdk-javascript/build/main';
 
-const cache = require('memory-cache');
-
 const apiUrl = process.env.API_URL || 'http://localhost:1337';
 const strapi = new Strapi(apiUrl);
 
@@ -44,13 +42,21 @@ export default {
   components: {
     NavigationItem: () => import('@/components/navigation-item'),
   },
+  data() {
+    return {
+      menulinks: null,
+    };
+  },
   computed: {
     ...mapState({
       navMobileActive: state => state.navigation.navMobileActive,
     }),
+    navigationLinks() {
+      return this.menulinks;
+    },
   },
-  asyncComputed: {
-    async navigationLinks() {
+  methods: {
+    async fetchNavigationLinks() {
       const { data: { menulinks } } = await strapi.request('post', '/graphql', {
         data: {
           query: `query {
@@ -70,14 +76,11 @@ export default {
           `,
         },
       });
-      // cache.put('menulinks', menulinks);
-      // console.log('#', cache.get('menulinks'));
-      return menulinks;
+      this.menulinks = menulinks;
     },
   },
   mounted() {
-    const links = cache.get('menulinks');
-    console.log(links);
+    this.fetchNavigationLinks();
   },
 };
 </script>
@@ -99,6 +102,10 @@ export default {
       &--active {
         max-height: 60vh;
         transition: max-height 1s;
+        @include mq(false, $navbar-breakpoint) {
+          max-height: none;
+          transition: none;
+        }
       }
     }
 
@@ -126,36 +133,36 @@ export default {
     &-menu {
       @include mq(false, $navbar-breakpoint) {
         display: flex;
-      }
-      &--active {
-        flex-direction: column;
+        &--active {
+          flex-direction: column;
 
-        .navbar-item {
-          border-bottom: 1px solid #dddddd;
-          &:hover {
-            border-top: none;
-          }
+          .navbar-item {
+            border-bottom: 1px solid #dddddd;
+            &:hover {
+              border-top: none;
+            }
 
-          &.has-dropdown {
-            border: none;
-            .navbar-link {
-              display: none;
+            &.has-dropdown {
+              border: none;
+              .navbar-link {
+                display: none;
+              }
             }
           }
-        }
 
-        .navbar-dropdown {
-          padding: 0;
-          .navbar-item {
-            font-size: 16px;
-            line-height: 24px;
-            border-top: 1px solid transparent;
-            border-bottom: 1px solid #dddddd;
+          .navbar-dropdown {
+            padding: 0;
+            .navbar-item {
+              font-size: 16px;
+              line-height: 24px;
+              border-top: 1px solid transparent;
+              border-bottom: 1px solid #dddddd;
+            }
           }
-        }
 
-        .nuxt-link-exact-active {
-          border-top: none;
+          .nuxt-link-exact-active {
+            border-top: none;
+          }
         }
       }
     }
