@@ -49,6 +49,11 @@ export default {
 
 .blog-article-teasers {
   width: 100%;
+
+  &__headline {
+    margin-bottom: 48px;
+  }
+
   &__teaser {
     width: 100%;
     @include mq($mq-medium) {
