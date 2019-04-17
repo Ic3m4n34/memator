@@ -47,21 +47,8 @@ export default {
     date() {
       const date = new Date(this.teaserData.publishDate);
       const day = date.getDate();
-      const monthConstructor = new Array(12);
-      monthConstructor[0] = 'Januar';
-      monthConstructor[1] = 'Februar';
-      monthConstructor[2] = 'März';
-      monthConstructor[3] = 'April';
-      monthConstructor[4] = 'Mai';
-      monthConstructor[5] = 'Juni';
-      monthConstructor[6] = 'Juli';
-      monthConstructor[7] = 'August';
-      monthConstructor[8] = 'September';
-      monthConstructor[9] = 'Oktober';
-      monthConstructor[10] = 'November';
-      monthConstructor[11] = 'Dezember';
-
-      const month = monthConstructor[date.getUTCMonth()];
+      const months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+      const month = months[date.getUTCMonth()];
 
       const year = date.getFullYear();
       return {
