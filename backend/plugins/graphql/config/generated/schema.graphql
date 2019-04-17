@@ -206,6 +206,14 @@ type createRolePayload {
   role: UsersPermissionsRole
 }
 
+input createTestimonialInput {
+  data: TestimonialInput
+}
+
+type createTestimonialPayload {
+  testimonial: Testimonial
+}
+
 input createUserInput {
   data: UserInput
 }
@@ -273,6 +281,14 @@ input deleteRoleInput {
 
 type deleteRolePayload {
   role: UsersPermissionsRole
+}
+
+input deleteTestimonialInput {
+  where: InputID
+}
+
+type deleteTestimonialPayload {
+  testimonial: Testimonial
 }
 
 input deleteUserInput {
@@ -343,6 +359,13 @@ input editRoleInput {
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input editTestimonialInput {
+  image: ID
+  name: String
+  position: String
+  testemonial: String
 }
 
 input editUserInput {
@@ -560,7 +583,7 @@ input MenulinkInput {
   childmenulinks: [ID]
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Blogarticle | createBlogarticlePayload | updateBlogarticlePayload | deleteBlogarticlePayload | BlogarticleConnection | BlogarticleAggregator | BlogarticleGroupBy | BlogarticleConnection_id | BlogarticleConnectionCreatedAt | BlogarticleConnectionUpdatedAt | BlogarticleConnectionHeadline | BlogarticleConnectionPublishDate | BlogarticleConnectionBlogImage | BlogarticleConnectionDescription | BlogarticleConnectionBlogContent | Childmenulink | createChildmenulinkPayload | updateChildmenulinkPayload | deleteChildmenulinkPayload | ChildmenulinkConnection | ChildmenulinkAggregator | ChildmenulinkGroupBy | ChildmenulinkConnection_id | ChildmenulinkConnectionCreatedAt | ChildmenulinkConnectionUpdatedAt | ChildmenulinkConnectionLabel | ChildmenulinkConnectionUrl | ChildmenulinkConnectionTitle | ChildmenulinkConnectionMenulink | Gallery | createGalleryPayload | updateGalleryPayload | deleteGalleryPayload | GalleryConnection | GalleryAggregator | GalleryGroupBy | GalleryConnection_id | GalleryConnectionCreatedAt | GalleryConnectionUpdatedAt | GalleryConnectionGalleryName | Galleryimage | createGalleryimagePayload | updateGalleryimagePayload | deleteGalleryimagePayload | GalleryimageConnection | GalleryimageAggregator | GalleryimageGroupBy | GalleryimageConnection_id | GalleryimageConnectionCreatedAt | GalleryimageConnectionUpdatedAt | GalleryimageConnectionImage | GalleryimageConnectionAltText | GalleryimageConnectionImageDescription | Menulink | createMenulinkPayload | updateMenulinkPayload | deleteMenulinkPayload | MenulinkConnection | MenulinkAggregator | MenulinkGroupBy | MenulinkConnection_id | MenulinkConnectionCreatedAt | MenulinkConnectionUpdatedAt | MenulinkConnectionLabel | MenulinkConnectionUrl | MenulinkConnectionTitle | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionTitle | PageConnectionMetaDescription | PageConnectionStageImage | PageConnectionStageImageAltText | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Blogarticle | createBlogarticlePayload | updateBlogarticlePayload | deleteBlogarticlePayload | BlogarticleConnection | BlogarticleAggregator | BlogarticleGroupBy | BlogarticleConnection_id | BlogarticleConnectionCreatedAt | BlogarticleConnectionUpdatedAt | BlogarticleConnectionHeadline | BlogarticleConnectionPublishDate | BlogarticleConnectionBlogImage | BlogarticleConnectionDescription | BlogarticleConnectionBlogContent | Childmenulink | createChildmenulinkPayload | updateChildmenulinkPayload | deleteChildmenulinkPayload | ChildmenulinkConnection | ChildmenulinkAggregator | ChildmenulinkGroupBy | ChildmenulinkConnection_id | ChildmenulinkConnectionCreatedAt | ChildmenulinkConnectionUpdatedAt | ChildmenulinkConnectionLabel | ChildmenulinkConnectionUrl | ChildmenulinkConnectionTitle | ChildmenulinkConnectionMenulink | Gallery | createGalleryPayload | updateGalleryPayload | deleteGalleryPayload | GalleryConnection | GalleryAggregator | GalleryGroupBy | GalleryConnection_id | GalleryConnectionCreatedAt | GalleryConnectionUpdatedAt | GalleryConnectionGalleryName | Galleryimage | createGalleryimagePayload | updateGalleryimagePayload | deleteGalleryimagePayload | GalleryimageConnection | GalleryimageAggregator | GalleryimageGroupBy | GalleryimageConnection_id | GalleryimageConnectionCreatedAt | GalleryimageConnectionUpdatedAt | GalleryimageConnectionImage | GalleryimageConnectionAltText | GalleryimageConnectionImageDescription | Menulink | createMenulinkPayload | updateMenulinkPayload | deleteMenulinkPayload | MenulinkConnection | MenulinkAggregator | MenulinkGroupBy | MenulinkConnection_id | MenulinkConnectionCreatedAt | MenulinkConnectionUpdatedAt | MenulinkConnectionLabel | MenulinkConnectionUrl | MenulinkConnectionTitle | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionTitle | PageConnectionMetaDescription | PageConnectionStageImage | PageConnectionStageImageAltText | Testimonial | createTestimonialPayload | updateTestimonialPayload | deleteTestimonialPayload | TestimonialConnection | TestimonialAggregator | TestimonialGroupBy | TestimonialConnection_id | TestimonialConnectionCreatedAt | TestimonialConnectionUpdatedAt | TestimonialConnectionImage | TestimonialConnectionName | TestimonialConnectionPosition | TestimonialConnectionTestemonial | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createBlogarticle(input: createBlogarticleInput): createBlogarticlePayload
@@ -581,6 +604,9 @@ type Mutation {
   createPage(input: createPageInput): createPagePayload
   updatePage(input: updatePageInput): updatePagePayload
   deletePage(input: deletePageInput): deletePagePayload
+  createTestimonial(input: createTestimonialInput): createTestimonialPayload
+  updateTestimonial(input: updateTestimonialInput): updateTestimonialPayload
+  deleteTestimonial(input: deleteTestimonialInput): deleteTestimonialPayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -693,6 +719,9 @@ type Query {
   page(id: ID!): Page
   pages(sort: String, limit: Int, start: Int, where: JSON): [Page]
   pagesConnection(sort: String, limit: Int, start: Int, where: JSON): PageConnection
+  testimonial(id: ID!): Testimonial
+  testimonials(sort: String, limit: Int, start: Int, where: JSON): [Testimonial]
+  testimonialsConnection(sort: String, limit: Int, start: Int, where: JSON): TestimonialConnection
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!): UsersPermissionsRole
@@ -714,6 +743,78 @@ input RoleInput {
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+type Testimonial {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  image: UploadFile
+  name: String
+  position: String
+  testemonial: String
+}
+
+type TestimonialAggregator {
+  count: Int
+}
+
+type TestimonialConnection {
+  values: [Testimonial]
+  groupBy: TestimonialGroupBy
+  aggregate: TestimonialAggregator
+}
+
+type TestimonialConnection_id {
+  key: ID
+  connection: TestimonialConnection
+}
+
+type TestimonialConnectionCreatedAt {
+  key: DateTime
+  connection: TestimonialConnection
+}
+
+type TestimonialConnectionImage {
+  key: ID
+  connection: TestimonialConnection
+}
+
+type TestimonialConnectionName {
+  key: String
+  connection: TestimonialConnection
+}
+
+type TestimonialConnectionPosition {
+  key: String
+  connection: TestimonialConnection
+}
+
+type TestimonialConnectionTestemonial {
+  key: String
+  connection: TestimonialConnection
+}
+
+type TestimonialConnectionUpdatedAt {
+  key: DateTime
+  connection: TestimonialConnection
+}
+
+type TestimonialGroupBy {
+  _id: [TestimonialConnection_id]
+  createdAt: [TestimonialConnectionCreatedAt]
+  updatedAt: [TestimonialConnectionUpdatedAt]
+  image: [TestimonialConnectionImage]
+  name: [TestimonialConnectionName]
+  position: [TestimonialConnectionPosition]
+  testemonial: [TestimonialConnectionTestemonial]
+}
+
+input TestimonialInput {
+  image: ID
+  name: String
+  position: String
+  testemonial: String
 }
 
 input updateBlogarticleInput {
@@ -777,6 +878,15 @@ input updateRoleInput {
 
 type updateRolePayload {
   role: UsersPermissionsRole
+}
+
+input updateTestimonialInput {
+  where: InputID
+  data: editTestimonialInput
+}
+
+type updateTestimonialPayload {
+  testimonial: Testimonial
 }
 
 input updateUserInput {

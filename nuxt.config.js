@@ -40,6 +40,7 @@ module.exports = {
   */
   plugins: [
     { src: '~/plugins/modal', ssr: false },
+    { src: '~/plugins/vue-awesome-swiper', ssr: false },
     { src: '~/plugins/vue-async-computed', ssr: false },
   ],
 

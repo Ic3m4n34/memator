@@ -33,6 +33,11 @@
         <BlogArticleTeasers :teasers="blogTeaserData" />
       </div>
     </section>
+    <section class="section">
+      <div class="container">
+        <TestimonialSlider />
+      </div>
+    </section>
   </div>
 </template>
 
@@ -50,6 +55,7 @@ export default {
     BlogArticleTeasers: () => import('@/components/blog-article-teasers'),
     Gallery: () => import('@/components/gallery'),
     StageImage: () => import('@/components/stage-image'),
+    TestimonialSlider: () => import('@/components/testimonial-slider'),
     TherapyTeaser: () => import('@/components/therapy-teaser'),
   },
   mixins: [PageMixin],
