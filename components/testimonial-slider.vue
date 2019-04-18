@@ -15,15 +15,34 @@
           />
         </div>
       </div>
-      <div class="swiper-pagination swiper-pagination-bullets"></div>
-      <div
+      <!-- <div
         class="swiper-button-prev"
         slot="button-prev"
       />
       <div
         class="swiper-button-next"
         slot="button-next"
-      />
+      /> -->
+      <div
+        class="testimonial-slider__prev-button"
+        slot="button-prev"
+      >
+        <img
+          src="/images/icons/arrow.png"
+          alt="vorherige Kundenmeinung"
+          class="testimonial-slider__prev-button--icon"
+        />
+      </div>
+      <div
+        class="testimonial-slider__next-button"
+        slot="button-next"
+      >
+        <img
+          src="/images/icons/arrow.png"
+          alt="vorherige Kundenmeinung"
+          class="testimonial-slider__next-button--icon"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -48,13 +67,9 @@ export default {
         slidesPerView: 'auto',
         centeredSlides: true,
         spaceBetween: 30,
-        pagination: {
-          el: '.swiper-pagination',
-          dynamicBullets: true,
-        },
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: '.testimonial-slider__next-button',
+          prevEl: '.testimonial-slider__prev-button',
         },
       },
     };
@@ -90,11 +105,42 @@ export default {
 <style lang="scss" scoped>
 
 .testimonial-slider {
-  height: 300px;
   width: 100%;
 
   &__headline {
     margin-bottom: 48px;
+  }
+
+  &__prev-button,
+  &__next-button {
+    position: absolute;
+    top: 50%;
+    width: 27px;
+    height: 44px;
+    margin-top: -22px;
+    z-index: 10;
+    cursor: pointer;
+    background-size: 27px 44px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__prev-button {
+    left: 10px;
+    right: auto;
+    height: 48px;
+    width: 48px;
+
+    &--icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__next-button {
+    right: 10px;
+    left: auto;
+    height: 48px;
+    width: 48px;
   }
 
   .swiper-slide {
