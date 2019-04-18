@@ -15,14 +15,6 @@
           />
         </div>
       </div>
-      <!-- <div
-        class="swiper-button-prev"
-        slot="button-prev"
-      />
-      <div
-        class="swiper-button-next"
-        slot="button-next"
-      /> -->
       <div
         class="testimonial-slider__prev-button"
         slot="button-prev"

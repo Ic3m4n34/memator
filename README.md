@@ -25,5 +25,6 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 ## next steps
 * [ ] cache Navigation
 * [ ] sticky header
-* [x] Headline Component
 * [ ] fetch data on serverside everywhere
+* [ ] map component
+* [ ] footer
