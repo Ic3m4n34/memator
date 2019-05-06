@@ -10,7 +10,10 @@
       @click="showModal"
       class="gallery-image__layer"
     >
-      <div class="gallery-image__layer-content">
+      <div
+        v-if="hasImageDescription"
+        class="gallery-image__layer-content"
+      >
         <span class="text">{{ image.imageDescription }}</span>
         <div class="gallery-image__underline" />
       </div>
@@ -27,7 +30,10 @@
         :alt="image.altText"
         class="gallery-image__modal-image"
       />
-      <div class="gallery-image__layer-content">
+      <div
+        v-if="hasImageDescription"
+        class="gallery-image__layer-content"
+      >
         <span class="text">{{ image.imageDescription }}</span>
         <div class="gallery-image__underline" />
       </div>
@@ -70,6 +76,10 @@ export default {
     ...mapGetters({
       isMobileScreen: 'viewport/isMobileScreen',
     }),
+    hasImageDescription() {
+      if (this.image.imageDescription.length > 0) return true;
+      return false;
+    },
     imageSrc() {
       return `${apiUrl}${this.image.image.url}`;
     },

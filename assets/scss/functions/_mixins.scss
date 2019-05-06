@@ -4,3 +4,9 @@
   line-height: $line-height;
   line-height: calculate-rem($line-height);
 }
+
+@mixin page-mixin() {
+  .text {
+    margin-bottom: 24px;
+  }
+}

@@ -88,6 +88,8 @@ export default {
 
     &-container {
       margin-top: 24px;
+      display: flex;
+      flex-direction: column;
     }
   }
 

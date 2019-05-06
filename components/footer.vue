@@ -35,6 +35,7 @@
                     <img
                       src="/images/icons/link-arrow.png"
                       :alt="`Footer Link - ${link.label}`"
+                      class="hidden-on-mobile"
                     />
                     {{ link.label }}
                   </nuxt-link>
@@ -161,14 +162,16 @@ export default {
     }
 
     > div {
-      width: 30%;
       display: flex;
       justify-content: center;
       flex-direction: column;
       text-align: center;
+      margin-bottom: 36px;
       @include mq($mq-medium) {
+        width: 30%;
         justify-content: flex-start;
         text-align: left;
+        margin-bottom: 0;
       }
     }
   }
@@ -185,6 +188,10 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    @include mq($mq-medium) {
+      justify-content: flex-start;
+    }
 
     img {
       margin-right: 12px;
@@ -205,6 +212,12 @@ export default {
   }
 
   &__social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include mq($mq-medium) {
+      justify-content: flex-start;
+    }
     ul {
       display: flex;
       justify-content: space-around;
@@ -226,6 +239,17 @@ export default {
         &:hover {
           color: #ffffff;
           text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .hidden {
+    &-on {
+      &-mobile {
+        display: none;
+        @include mq($mq-medium) {
+          display: block;
         }
       }
     }
