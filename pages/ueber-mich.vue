@@ -1,8 +1,8 @@
 <template>
   <div class="ueber-mich">
     <HeaderImageWIthBreadcrumb :headline="'Über mich'" />
-    <div class="container">
-      <section class="section">
+    <section class="section">
+      <div class="container">
         <HeadingWithPaw
           :headline="'Peggy Meyer'"
           class="ueber-mich__headline"
@@ -24,100 +24,37 @@
           2015 verwirklichte ich mir, mit der riesen Unterstützung meiner Familie, den Traum von der eigenen Praxis mit Unterwasserlaufband.
           Die Tierphysiotherapie sehe ich als sinnvolle Ergänzung und Erweiterung zur klassischen Tiermedizin. Ich lege großen Wert auf die Zusammenarbeit mit Ihrem behandelten Tierarzt.
         </p>
-      </section>
-      <section class="section">
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
         <HeadingWithPaw
           :headline="'Die Praxis'"
           class="ueber-mich__headline"
         />
         <Gallery :gallery-id="'5cd070de5b346322597c96fe'" />
-      </section>
-    </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <HeadingWithPaw
+          :headline="'Meine Qualifikationen'"
+          class="ueber-mich__headline"
+        />
+        <QualificationsList />
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
-const QUALIFICATION_LIST = [
-  {
-    date: '04/2011 - 04/2013',
-    description: 'Ausbildung zur Tierphysiotherapeutin Hund und Pferd mit Zusatzqualifikation Akupunktur',
-  },
-  {
-    date: '10/2012',
-    description: '„Der Hüftpatient“ Dr.med.vet.Andreas Zohmann',
-  },
-  {
-    date: '02/2013',
-    description: '„Manuelle Techniken“ Simone Fuchs',
-  },
-  {
-    date: '05/2013',
-    description: '„Gangbildanalyse beim Hund“ FBZ vet. Christiane Gräff Msc.',
-  },
-  {
-    date: '12/2013',
-    description: '„Orthopädische Erkrankungen der Vorderextremität“ Dr.med.vet.Ulrich Göggele',
-  },
-  {
-    date: '12/2013',
-    description: '„Manuelle Therapie“ Sabine Harrer',
-  },
-  {
-    date: '09/2014',
-    description: '„Manuelle Therapie Wirbelsäule Teil I“ Sabine Harrer',
-  },
-  {
-    date: '10/2014',
-    description: '„Sportphysiotherapie im Hundesport“ FBZ vet Christiane Gräff',
-  },
-  {
-    date: '03/2015',
-    description: '„Manuelle Therapie Wirbelsäule Teil II“ Sabine Harrer',
-  },
-  {
-    date: '03/2015',
-    description: '„Der neurologische Patient“ Dr. Kai Rentmeister',
-  },
-  {
-    date: '09/2015',
-    description: '„Hydrotherapie“ Dr. Sabine Mai',
-  },
-  {
-    date: '07/2016',
-    description: '„Das Reha Rezept“ Dr. Sabine Mai',
-  },
-  {
-    date: '07/2016',
-    description: '„Vet Taping“ Dr. Sabine Mai',
-  },
-  {
-    date: '11/2016',
-    description: '„RAC Pulsdiagnostik“ Peter Rosin',
-  },
-  {
-    date: '03/2017',
-    description: '„Das Hüftgelenk des Hundes“ Peter Rosin',
-  },
-  {
-    date: '11/2017',
-    description: '„Grundkurs Laser-Frequenz Therapie nach Vinja Bauer™“ Anette Machentanz',
-  },
-  {
-    date: '07/2018',
-    description: '„Technikkurs Laser-Frequenz Therapie nach Vinja Bauer™“',
-  },
-  {
-    date: '09/2018',
-    description: '„Röntgen Diagnostik“ Peter Rosin',
-  },
-];
-
 export default {
   name: 'UeberMich',
   components: {
     Gallery: () => import('@/components/gallery'),
     HeaderImageWIthBreadcrumb: () => import('@/components/header-image-with-breadcrumb'),
     HeadingWithPaw: () => import('@/components/heading-with-paw'),
+    QualificationsList: () => import('@/components/qualifications-list'),
   },
 };
 </script>

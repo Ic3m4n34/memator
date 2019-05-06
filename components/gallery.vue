@@ -1,7 +1,10 @@
 <template>
   <div class="gallery">
-    <div class="gallery__headline">
-      <HeadingWithPaw :headline="'Galerie'" />
+    <div
+      v-if="galleryHeadline"
+      class="gallery__headline"
+    >
+      <HeadingWithPaw :headline="galleryHeadline" />
     </div>
     <div class="gallery__images">
       <GalleryImage
@@ -27,6 +30,10 @@ export default {
     galleryId: {
       type: String,
       required: true,
+    },
+    galleryHeadline: {
+      type: String,
+      default: null,
     },
   },
   data() {
