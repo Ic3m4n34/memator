@@ -46,6 +46,7 @@ export default {
     color: #3a3a3a;
     font-weight: 500;
     text-align: center;
+    margin-top: 12px;
     @include mq($mq-medium) {
       @include font-size(32px, 34px);
     }

@@ -11,12 +11,14 @@
           alt="Therapieangebot - Angebot"
           class="qualifications-list__icon"
         />
-        <span class="qualifications-list__date">
-          {{ qualification.date }}
-        </span>
-        <span class="qualifications-list__qualification">
-          {{ qualification.description }}
-        </span>
+        <div class="qualifications-list__date-qual">
+          <span class="qualifications-list__date">
+            {{ qualification.date }}
+          </span>
+          <span class="qualifications-list__qualification">
+            {{ qualification.description }}
+          </span>
+        </div>
       </li>
     </ul>
   </div>
@@ -112,24 +114,48 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'assets/scss/base';
 
 .qualifications-list {
   &__date {
     font-weight: 600;
-    margin-right: 12px;
+    min-width: 150px;
+    text-align: left;
+    @include mq($mq-medium) {
+      margin-right: 12px;
+    }
+  }
+
+  &__date-qual {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    @include mq($mq-medium) {
+      flex-direction: row;
+    }
   }
 
   &__icon {
-    margin-right: 12px;
+    margin-right: 36px;
     height: 32px;
     width: 32px;
+    @include mq($mq-medium) {
+      margin-right: 12px;
+    }
   }
 
   &__list-item {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 36px;
+    @include mq($mq-medium) {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__qualification {
+    text-align: left;
   }
 }
 
