@@ -39,8 +39,6 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/modal', ssr: false },
-    { src: '~/plugins/vue-awesome-swiper', ssr: false },
     { src: '~/plugins/vue-async-computed', ssr: false },
   ],
 
@@ -49,7 +47,6 @@ module.exports = {
   */
   modules: [
     // Doc:https://github.com/nuxt-community/modules/tree/master/packages/bulma
-    '@nuxtjs/bulma',
   ],
 
   /*

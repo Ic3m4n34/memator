@@ -27,4 +27,4 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 * [ ] sticky header
 * [ ] fetch data on serverside everywhere
 * [ ] map component
-* [ ] footer
+* [ ] footer# nuxt-boilerplate
