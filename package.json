@@ -21,7 +21,7 @@
     "jest-serializer-vue": "^2.0.2",
     "lodash": "^4.17.11",
     "memory-cache": "^0.2.0",
-    "nuxt": "^2.5.1",
+    "nuxt": "^2.6.3",
     "vue": "^2.6.10",
     "vue-async-computed": "^3.6.1",
     "vue-server-renderer": "^2.6.10",
